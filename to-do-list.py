@@ -1,66 +1,74 @@
+from sty import fg, ef, rs # For cross-platform color coding
+
+RESET = fg.rs + ef.rs
+RED = fg.red
+BLUE = fg.blue
+GREEN = fg.green
+YELLOW = fg.yellow
+BOLD = ef.bold
+
 tasks = []
 
 def addTask():
-    task = input("Please enter a task: ")
+    task = input(f"{BLUE}Please enter a task: {RESET}")
     tasks.append(task)
-    print(f"Task '{task}' added to the list.")
+    print(f"{BOLD}{GREEN}Task '{task}' added to the list.{RESET}")
 
 
-def  listTasks():
+def listTasks():
     if not tasks:
-        print("There are no tasks currently")
+        print(f"{RED}{BOLD}There are no tasks currently{RESET}")
     else:
-        print("Current Tasks:")
+        print(f"{BOLD}{GREEN}Current Tasks:{RESET}")
         for index, task in enumerate(tasks):
-            print(f"Task # {index + 1}. {task}\n")
+            print(f"{BOLD}Task # {index + 1}. {task}\n{RESET}")
 
 
 def deleteTask():
-
     listTasks()
     try:
-        taskToDelete = int(input("Enter the # to delete:")) - 1
-        if taskToDelete <=0 and taskToDelete < len(tasks):
+        taskToDelete = int(input(f"{BLUE}Enter the # to delete:{RESET}")) - 1
+        if taskToDelete <= 0 and taskToDelete < len(tasks):
             tasks.pop(taskToDelete)
-            print(f"Task # {taskToDelete} has been removed ")
+            print(f"{BOLD}{GREEN}Task # {taskToDelete} has been removed {RESET}")
         else:
-            print(f"Task # {taskToDelete} does not exist")
+            print(f"{RED}{BOLD}Task # {taskToDelete} does not exist{RESET}")
 
     except:
-        print("Invalid input.")
+        print(f"{RED}{BOLD}Invalid input.{RESET}")
         
 def editTask():
     listTasks()
     if len(tasks) == 0:
         return
     try:
-        taskToEdit = int(input("What task would you like to edit? ")) - 1 #taskToEdit = THE NUMBER OF THE TASK TO EDIT
-        if taskToEdit <=0 and taskToEdit < len(tasks):
-            edit = input("What would you want to edit the task to?") # edit = WHAT WE CHANGE THE TASK TO
+        taskToEdit = int(input(f"{BLUE}What task would you like to edit? {RESET}")) - 1
+        if taskToEdit <= 0 and taskToEdit < len(tasks):
+            edit = input(f"{BOLD}What would you want to edit the task to?{RESET}")
             tasks[taskToEdit] = edit
-            print(f"Task # {taskToEdit} has been changed to {edit}")
+            print(f"{BOLD}{GREEN}Task # {taskToEdit} has been changed to {edit}{RESET}")
         else:
-            print(f"Task # {taskToEdit} does not exist")
+            print(f"{RED}{BOLD}Task # {taskToEdit} does not exist{RESET}")
 
     except:
-        print("Invalid input.")
+        print(f"{RED}{BOLD}Invalid input.{RESET}")
             
-if  __name__  == "__main__":
+if __name__ == "__main__":
     ### Create a loop  
-    print("Welcome to the to-do list app:")
+    print(f"{GREEN}{BOLD}Welcome to the to-do list app:{RESET}")
     
     while True:
         ### Ask the user for a task
         print("\n")
-        print("Please select one of the following options:") 
+        print(f"{BOLD}Please select one of the following options:{RESET}") 
         print("-------------------------------------------") 
-        print("1. Add a new task")
-        print("2. Delete a task")
-        print("3. List tasks")
-        print("4. Edit task")
-        print("5. Quit")
+        print(f"{BOLD}{RED}1. Add a new task{RESET}")
+        print(f"{BOLD}{YELLOW}2. Delete a task{RESET}")
+        print(f"{BOLD}{BLUE}3. List tasks{RESET}")
+        print(f"{BOLD}{GREEN}4. Edit task{RESET}")
+        print(f"{BOLD}{RED}5. Quit{RESET}")
         
-        choice = input("\nEnter your choice: ")
+        choice = input(f"\n{BLUE}Enter your choice: {RESET}")
         if(choice == "1"):
             addTask()        
         elif(choice == "2"):
@@ -72,6 +80,6 @@ if  __name__  == "__main__":
         elif(choice == "5"):
             break
         else:
-            print("Invalid input. Please try again.")
+            print(f"{RED}{BOLD}Invalid input. Please try again.{RESET}")
             
-    print("\nGoodbye👋👋")
+    print(f"{BOLD}{GREEN}\nGoodbye👋👋{RESET}")
