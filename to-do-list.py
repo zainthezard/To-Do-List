@@ -28,6 +28,22 @@ def deleteTask():
 
     except:
         print("Invalid input.")
+        
+def editTask():
+    listTasks()
+    if len(tasks) == 0:
+        return
+    try:
+        taskToEdit = int(input("What task would you like to edit? ")) - 1 #taskToEdit = THE NUMBER OF THE TASK TO EDIT
+        if taskToEdit <=0 and taskToEdit < len(tasks):
+            edit = input("What would you want to edit the task to?") # edit = WHAT WE CHANGE THE TASK TO
+            tasks[taskToEdit] = edit
+            print(f"Task # {taskToEdit} has been changed to {edit}")
+        else:
+            print(f"Task # {taskToEdit} does not exist")
+
+    except:
+        print("Invalid input.")
             
 if  __name__  == "__main__":
     ### Create a loop  
@@ -41,7 +57,8 @@ if  __name__  == "__main__":
         print("1. Add a new task")
         print("2. Delete a task")
         print("3. List tasks")
-        print("4. Quit")
+        print("4. Edit task")
+        print("5. Quit")
         
         choice = input("\nEnter your choice: ")
         if(choice == "1"):
@@ -51,6 +68,8 @@ if  __name__  == "__main__":
         elif(choice == "3"):
             listTasks()
         elif(choice == "4"):
+            editTask()
+        elif(choice == "5"):
             break
         else:
             print("Invalid input. Please try again.")
