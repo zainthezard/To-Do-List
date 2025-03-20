@@ -69,7 +69,7 @@ Enter your choice: 3
 Current Tasks:
 Task # 1. Finish the report
 Contributing
-Feel free to fork this repository, create a branch, and submit a pull request for any improvements or bug fixes!
+
 
 License
 This project is licensed under the MIT License - see the LICENSE file for details.
